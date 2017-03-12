@@ -188,27 +188,117 @@ if let surveyAnswer = surveyAnswer{
 
 
 //Classes and Structs
+struct ScreenLocation{
+    var x: Int
+    var y: Int
+}
+
+let location = ScreenLocation(x: 0, y: 0)
+
+var location2 = location
+location2.x = 10
+
+location2.x
+location.x
+
+class Person{
+    var name: String
+    var age: Int
+    
+    init(name: String, age: Int = 0) {
+        self.name = name
+        self.age = age
+    }
+}
+
+let myPerson = Person(name: "Adam", age: 30)
+
+let myFriend = Person(name: "Joe")
+
+var otherPerson = myPerson
+
+otherPerson.age = 100
+myPerson.age
 
 
 
 //Protocols
+protocol DogYears{
+    var age : Int { set get }
+    
+    func ageInDogYears() -> Int
+}
 
+extension DogYears {
+    func ageInDogYears() -> Int{
+        return age * 7
+    }
+}
+
+class Dog: DogYears{
+
+    var age = 1
+}
 
 
 //Inheritance
+class Student: Person, DogYears{
+    
+    var studentID: String?
+    var classNumber: Int?
+}
 
+let student1 = Student(name: "Mike")
+
+student1.classNumber = 401
+student1.studentID = "s786sf67822g29"
 
 
 //Extensions
+extension String{
+    
+    func length()-> Int{
+        return self.characters.count
+    }
+    
+}
+
+let myString = "This is a test string"
+myString.length()
 
 
 
 //Functions
+func greet(person: String = "Errbody") -> String {
+    let greeting = "Hello, " + person + "!"
+    return greeting
+}
+greet(person: "Adam")
+greet()
+
+func addThese(numbers: Int...)-> Int{
+    
+    var total = 0
+    
+    for number in numbers{
+        total += number
+    }
+    
+    return total
+}
+
+addThese(numbers: 0,1,2,3,4,5)
+
+func changeStuff(number: Int, callback:(Int)->()){
+    callback(number * number)
+}
 
 
 
 //Closures
+changeStuff(number: 10) { (results) in
 
+}
 
 
 
